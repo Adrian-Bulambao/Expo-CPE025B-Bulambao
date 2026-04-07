@@ -1,12 +1,14 @@
-// GoalItem.js
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, Pressable } from 'react-native';
 
-function GoalItem(props) {
+function GoalItem({ text, onPress }) {
   return (
-    <View style={styles.goalItem}>
-      <Text>{props.text}</Text>
-    </View>
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [styles.goalItem, pressed && styles.pressed]}
+    >
+      <Text>{text}</Text>
+    </Pressable>
   );
 }
 
@@ -21,6 +23,8 @@ const styles = StyleSheet.create({
     borderColor: '#cccccc',
     borderRadius: 6,
     backgroundColor: '#f9f9f9',
-    fontSize: 16,
+  },
+  pressed: {
+    backgroundColor: '#ddd',
   },
 });

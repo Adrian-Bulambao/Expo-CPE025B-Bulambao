@@ -2,12 +2,17 @@ import React from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import GoalItem from './GoalItem';
 
-function GoalList({ goals }) {
+function GoalList({ goals, onPressGoal }) {
   return (
     <View style={styles.goalListContainer}>
       <FlatList
         data={goals}
-        renderItem={(itemData) => <GoalItem text={itemData.item.text} />}
+        renderItem={(itemData) => (
+          <GoalItem
+            text={itemData.item.text}
+            onPress={() => onPressGoal(itemData.item.key)}
+          />
+        )}
       />
     </View>
   );
